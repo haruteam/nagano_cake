@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  doc_count: 
+  exec: MyString
+  rails: MyString
+  g: MyString
+  model: MyString
+  corpus: MyString
+  name: 
+
+two:
+  name: 
+  doc_count: 
+  exec: MyString
+  rails: MyString
+  g: MyString
+  model: MyString
+  corpus: MyString
+  name: 
