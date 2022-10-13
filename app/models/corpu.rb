@@ -1,2 +1,0 @@
-class Corpu < ApplicationRecord
-end
