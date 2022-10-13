@@ -1,1 +1,74 @@
-<h1>TOP</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 ml-auto">
+      <p class="mt-5">ジャンル検索</p>
+
+        <%=link_to "ケーキ",class: "text-dark" %><br>
+        <%=link_to "焼き菓子", class: "text-dark" %><br>
+        <%=link_to "プリン", class: "text-dark" %><br>
+        <%=link_to "キャンディ", class: "text-dark" %><br>
+
+    </div>
+    <div class="col-8">
+      <div class="card mt-5 w-100">
+        <%= image_tag 'main_02.jpg' %>
+        <div class="card-img-overlay">
+          <p class="text-dark main-text">ようこそ、ながのCAKEへ！<br>このサイトは、ケーキ販売のECサイトになります。<br>
+          　会員でない方も商品の閲覧はできますが、<br>購入には会員登録が必要になります
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-1 mr-auto"></div>
+  </div>
+  <div class="row mt-4 mb-4">
+    <div class="col-2 ml-auto"></div>
+    <div class="col-8"><h1>新着商品</h1></div>
+    <div class="col-1 mr-auto"></div>
+  </div>
+  <div class="row">
+    <div class="col-2 ml-auto"></div>
+    <div class="col-2">
+      <div class="card">
+        <%= image_tag 'main_02.jpg' %>
+  　　　　<div class="card-body">
+          <h5>商品名</h5>
+          <p>値段</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="card">
+        <%= image_tag 'main_02.jpg' %>
+  　　　　<div class="card-body">
+          <h5>商品名</h5>
+          <p>値段</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="card">
+        <%= image_tag 'main_02.jpg' %>
+  　　　　<div class="card-body">
+          <h5>商品名</h5>
+          <p>値段</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="card">
+        <%= image_tag 'main_02.jpg' %>
+  　　　　<div class="card-body">
+          <h5>商品名</h5>
+          <p>値段</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-1 mr-auto"></div>
+  </div>
+  <div class="float-right p-5">
+    <%=link_to "全ての商品を見る >" %>
+  </div>
+</div>
+
+
