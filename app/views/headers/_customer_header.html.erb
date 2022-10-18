@@ -1,5 +1,4 @@
-
-              <p>ようこそ、<%=current_user.name %></p>
+              <p>ようこそ、<%= current_customer.last_name %>さん！</p>
               <li>
                 <%=link_to "マイページ", customers_path,class: "btn btn-outline-secondary mr-3" %>
               </li>
@@ -13,4 +12,3 @@
                 <%=link_to "ログアウト", destroy_customer_session_path,class: "btn btn-outline-secondary mr-3",method: :delete %>
               </li>
 
-     

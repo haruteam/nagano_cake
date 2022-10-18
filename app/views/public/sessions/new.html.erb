@@ -1,6 +1,6 @@
-<h3><span class="m-5">ログイン</span></h3>
+<h3 class="text-center"><span class="m-5">ログイン</span></h3>
 
-<p>会員の方はこちらからログイン</p>
+<p class="text-center">会員の方はこちらからログイン</p>
 
 <%= form_with model: @customer, url: new_customer_session_path do |f| %>
   <div class="field text-center">
@@ -17,11 +17,11 @@
 
   <div class="actions text-center">
     <%= f.submit "ログイン",class: "btn btn-primary px-5"%>
-  </div>
+  </div><br>
 <% end %>
-<p>会員登録がお済でない方</p>
+<p class="field text-center">会員登録がお済でない方</p>
 
-<p><%=link_to "こちら", new_customer_registration_path %> から新規登録を行ってください。
+<p class="field text-center"><%=link_to "こちら", new_customer_registration_path %> から新規登録を行ってください。
 
 
 

@@ -1,14 +1,8 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
   root to: "public/homes#top"
   get "home/about"=>"public/homes#about",as: "about"
-  # public items
-  resources :items, only: [:index, :show]
+
 
   # 顧客登録,login
   devise_for :customers,skip: [:passwords], controllers: {
@@ -17,13 +11,16 @@ Rails.application.routes.draw do
   }
 
   # customers ★
-  resource :customers, only: [:show, :edit, :update]
-  get 'customers/confirm'
-  put '/customers'=>'customers#withdrow'
-
-  # cart_items
-  resources :cart_items, only: [:index, :create, :update, :destroy]
+  scope module: :public do
+    resource :customers, only: [:show, :edit, :update]
+    get 'customers/confirm'
+    put '/customers'=>'customers#withdrow'
+    
+    resources :items, only: [:index, :show]
+    
+      resources :cart_items, only: [:index, :create, :update, :destroy]
   delete 'cart_items/destroy_all'
+  end
 
   # orders
   resources :orders, only: [:new, :create, :show, :index]
@@ -34,9 +31,7 @@ Rails.application.routes.draw do
   resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
 
   # admin login~
-  devise_for :admin, skip: [:passwords] ,controllers: {
-    # :registrations
-   registrations: "admin/registrations",
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    sessions: "admin/sessions"
   }
   

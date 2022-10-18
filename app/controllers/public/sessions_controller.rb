@@ -12,7 +12,9 @@ class Public::SessionsController < Devise::SessionsController
   # def create
   #   super
   # end
-
+  def after_sign_out_path_for(resource)
+    root_path
+  end
   # DELETE /resource/sign_out
   # def destroy
   #   super
@@ -24,9 +26,7 @@ class Public::SessionsController < Devise::SessionsController
   def customer_state
     @customer=Customer.find_by(email: params[:customer][:email])
     return if !@customer
-    if (@customer.valid_password?(params[:customers][:password])) && (@customer.is_deleted == false)
-      items_path
-    else
+    if (@customer.valid_password?(params[:customer][:password])) && (@customer.is_deleted == true)
       redirect_to "/customers/sign_up"
     end
   end
