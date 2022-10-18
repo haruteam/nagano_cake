@@ -23,16 +23,11 @@
     </tr>
     <tr>
       <th>販売ステータス</th>
-      <td><%=f.radio_button :is_active, "true", id: "is_active" %><%=f.label :is_active, "販売中" %>
-        <%=f.radio_button :is_active, "false", id: "is_not_active"%><%=f.label :is_not_active, "販売停止中" %></td>
+      <td><%=f.radio_button :is_active, "販売中", id: "item_is_active" %><%=f.label :is_active, "販売中" %>
+        <%=f.radio_button :is_active, "販売停止中", id: "item_is_not_active"%><%=f.label :is_not_active, "販売停止中" %></td>
     </tr>
     <tr>
       <th><%= f.submit "新規登録", class: "btn btn-success px-4" %></th>
     </tr>
   </table>
 <% end %>
-
-
-
-
-
