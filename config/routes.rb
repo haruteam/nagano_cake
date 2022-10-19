@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   # admin genres
   namespace :admin do
-    resources :genres, only: [:index, :create, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
   end
 
   # admin cutomers
