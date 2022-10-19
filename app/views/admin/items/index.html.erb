@@ -5,7 +5,7 @@
       <table>
         <thead>
           <tr>
-            <th class="col-2">商品ID</th>
+            <th class="col-1">商品ID</th>
             <th class="col-2">商品名</th>
             <th class="col-2">税抜価格</th>
             <th class="col-2">ジャンル</th>
@@ -15,12 +15,18 @@
         <tbody>
           <% @items.each do |item| %>
             <tr>
-              <td class="col-2"><%= item.id %></td>
+              <td class="col-1"><%= item.id %></td>
               <td class="col-2"><%=link_to admin_item_path(item.id) do %><%= item.name %><% end %></td>
               <td class="col-2"><%= item.price.to_s(:delimited) %></td>
               <td class="col-2"><%= item.genre.name %></td>
-              <td class="col-2"><%= item.is_active %></td>
+              <% if item.is_active == "販売中" %>
+                <td class="col-2 text-success"><%= item.is_active %></td>
+              <% else %>
+                <td class="col-2 text-secondary fw-bold"><%= item.is_active %></td>
+              <% end %>
             </tr>
+            <!--delete-->
+            <tr><th><%= link_to "delete", admin_item_path(item.id), method: :delete %></th></tr>
           <% end %>
         </tbody>
       </table>

@@ -1,0 +1,44 @@
+<h4>商品編集</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <%= form_with model: @item, url: admin_item_path(params[:id]) do |f| %>
+        <table>
+          <tr>
+            <th><%= f.label :image, "商品画像" %></th>
+            <td><%= f.file_field :image, accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :name, "商品名" %></th>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :introduction, "商品説明" %></th>
+            <td><%= f.text_area :introduction %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :genre_id, "ジャンル" %></th>
+            <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), { include_blank: '-- 選択してください --'} %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :price, "税抜価格" %></th>
+            <td><%= f.text_field :price %></td>
+          </tr>
+          <tr>
+            <th>販売ステータス</th>
+            <td><%= f.radio_button :is_active, "販売中", id: "item_is_active" %><%= f.label :is_active, "販売中" %>
+                <%= f.radio_button :is_active, "販売停止中", id: "item_is_not_active"%><%= f.label :is_not_active, "販売停止中" %></td>
+          </tr>
+          <tr>
+            <th><%= f.submit "変更を保存", class: "btn btn-success px-4" %></th>
+          </tr>
+          <!--削除-->
+          <tr>
+            <th></th> 
+          </tr>
+          
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>
