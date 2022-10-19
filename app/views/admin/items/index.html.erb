@@ -1,28 +1,34 @@
-<h4>商品一覧</h4>
 <div class="container">
   <div class="row">
-    <div class="col-10">
-      <table>
+    <h4 class="col-10">商品一覧</h4>
+    <button class=" btn btn-light rounded-circle shadow-sm bg-white rounded">
+      <h4>
+        <%= link_to "＋", new_admin_item_path, class: "text-secondary" %>
+      </h4>
+    </button>    
+  </div>
+  <div class="row mt-4">
+      <table class="col-12">
         <thead>
           <tr>
-            <th class="col-1">商品ID</th>
-            <th class="col-2">商品名</th>
-            <th class="col-2">税抜価格</th>
-            <th class="col-2">ジャンル</th>
-            <th class="col-2">ステータス</th>
+            <th class="mx-auto">商品ID</th>
+            <th class="mx-auto">商品名</th>
+            <th class="mx-auto">税抜価格</th>
+            <th class="mx-auto">ジャンル</th>
+            <th class="mx-auto">ステータス</th>
           </tr>
         </thead>
         <tbody>
           <% @items.each do |item| %>
             <tr>
-              <td class="col-1"><%= item.id %></td>
-              <td class="col-2"><%=link_to admin_item_path(item.id) do %><%= item.name %><% end %></td>
-              <td class="col-2"><%= item.price.to_s(:delimited) %></td>
-              <td class="col-2"><%= item.genre.name %></td>
+              <td><%= item.id %></td>
+              <td><%=link_to admin_item_path(item.id) do %><%= item.name %><% end %></td>
+              <td><%= item.price.to_s(:delimited) %></td>
+              <td><%= item.genre.name %></td>
               <% if item.is_active == "販売中" %>
-                <td class="col-2 text-success"><%= item.is_active %></td>
+                <td class="text-success"><%= item.is_active %></td>
               <% else %>
-                <td class="col-2 text-secondary fw-bold"><%= item.is_active %></td>
+                <td class="text-secondary fw-bold"><%= item.is_active %></td>
               <% end %>
             </tr>
             <!--delete-->
@@ -30,6 +36,5 @@
           <% end %>
         </tbody>
       </table>
-    </div>
   </div>
 </div>
