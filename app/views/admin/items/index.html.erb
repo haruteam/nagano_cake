@@ -25,10 +25,10 @@
               <td><%=link_to admin_item_path(item.id) do %><%= item.name %><% end %></td>
               <td><%= item.price.to_s(:delimited) %></td>
               <td><%= item.genre.name %></td>
-              <% if item.is_active == "販売中" %>
-                <td class="text-success"><%= item.is_active %></td>
+              <% if item.is_active == "ing"%>
+                <td class="text-success"><%= item.is_active_i18n %></td>
               <% else %>
-                <td class="text-secondary fw-bold"><%= item.is_active %></td>
+                <td class="text-secondary fw-bold"><%= item.is_active_i18n %></td>
               <% end %>
             </tr>
             <!--delete-->

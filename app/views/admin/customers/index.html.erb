@@ -1,2 +1,35 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+<h4>会員一覧</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <% @customers.each do |customer| %>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">会員ID</th>
+              <th scope="col">氏名</th>
+              <th scope="col">メールアドレス</th>
+              <th scope="col">ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><%= customer.id %></td>
+              <td><%= customer.last_name %><%= customer.first_name %></td>
+              <td><%= customer.email %></td>
+              <% if customer.is_deleted == "now" %>
+              
+                <td class="text-success"><%= customer.is_deleted_i18n %></td>
+                
+              <% else %>
+              
+                <td class="text-secondary"><%= customer.is_deleted_i18n %></td>
+                
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -14,7 +14,7 @@ ja:
 
     customer:
       is_deleted:
-        out: "退会済み"
+        out: "退会"
         now: "有効"
 
     order_detail:
@@ -24,3 +24,7 @@ ja:
         production: "製作中"
         finish: "製作完了"
 
+    item:
+      is_active:
+        ing: "販売中"
+        stop: "販売停止中"
