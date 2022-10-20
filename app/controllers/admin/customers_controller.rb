@@ -19,7 +19,7 @@ class Admin::CustomersController < ApplicationController
   def update
     @customer=Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to "/"
+      redirect_to admin_customer_path(params[:id])
     else
       render :edit
     end

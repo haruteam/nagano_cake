@@ -51,18 +51,20 @@ Rails.application.routes.draw do
 
   # admin cutomers
   namespace :admin do
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update] 
   end
 
   # admin orders
   namespace :admin do
-    resources :orders, only: [:update, :show]
+    resources :orders, only: [:index, :update, :show,]
   end
 
   # admon order_detail
   namespace :admin do
     resources :order_details, only: [:update]
   end
+  
+
 
 
 
