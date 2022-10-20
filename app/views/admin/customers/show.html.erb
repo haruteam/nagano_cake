@@ -1,2 +1,52 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <% @customer.each do |c| %>
+        <h4><strong><%= "#{c.last_name}#{c.first_name}" %></strong>さんの会員詳細</h4>
+        <table class="table table-borderless mt-4">
+          <tr>
+            <th>会員ID</th>
+            <td><%= c.id %></td>
+          </tr>
+          <tr>
+            <th>氏名</th>
+            <td><%= "#{c.last_name} #{c.first_name}" %></td>
+          </tr>
+          <tr>
+            <th>フリガナ</th>
+            <td><%= "#{c.last_name_kana} #{c.first_name_kana}" %></td>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+            <td><%= c.postal_code %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= c.address %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= c.telephone_number %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= c.email %></td>
+          </tr>
+          <tr>
+            <th>会員ステータス</th>
+            <% if c.is_deleted %>
+              <td class="text-success"><strong>有効</strong></td>
+            <% else %>
+              <td class="text-secondary"><strong>退会</strong></td>
+            <% end %>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= link_to "編集する", edit_admin_customer_path(c.id), class:  "btn btn-success px-3" %></td>
+            <td><%= link_to "注文履歴一覧を見る", admin_root_path, class:  "btn btn-primary px-3"  %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

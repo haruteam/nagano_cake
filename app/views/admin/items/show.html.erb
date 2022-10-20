@@ -24,10 +24,10 @@
         </tr>
         <tr>
           <th>販売ステータス</th>
-          <% if item.is_active == "ing" %>
-            <td class="text-success"><%= item.is_active_i18n %></td>
+          <% if item.is_active%>
+            <td class="text-success">販売中</td>
           <% else %>
-            <td class="text-secondary"><%= item.is_active_i18n %></td>
+            <td class="text-secondary">販売停止中</td>
           <% end %>
           
         </tr>

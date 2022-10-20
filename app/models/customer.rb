@@ -4,5 +4,4 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  enum is_deleted: {out: true, now: false}
 end
