@@ -12,29 +12,32 @@ Rails.application.routes.draw do
 
   # customers ★
   scope module: :public do
-    resource :customers, only: [:show, :edit, :update]
+    resource :customers, only: [:show, :edit, :update] do
     get 'customers/confirm'
     put '/customers'=>'customers#withdrow'
-    
-    resources :items, only: [:index, :show]
-    
+  
+      delete 'cart_items/destroy_all'
       resources :cart_items, only: [:index, :create, :update, :destroy]
-  delete 'cart_items/destroy_all'
+      
+    end
+
+    resources :items, only: [:index, :show]
+
+    # orders
+    resource :orders, only: [:new, :create, :show, :index]
+    post 'orders/confirm'
+    get 'orders/complete'
+  
+    # deliveries
+    resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
+    
   end
-
-  # orders
-  resources :orders, only: [:new, :create, :show, :index]
-  get 'orders/confirm'
-  get 'orders/complete'
-
-  # deliveries
-  resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
 
   # admin login~
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    sessions: "admin/sessions"
   }
-  
+
   namespace :admin do
     root to: 'homes#top'
   end
@@ -51,7 +54,7 @@ Rails.application.routes.draw do
 
   # admin cutomers
   namespace :admin do
-    resources :customers, only: [:index, :show, :edit, :update] 
+    resources :customers, only: [:index, :show, :edit, :update]
   end
 
   # admin orders
@@ -63,7 +66,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :order_details, only: [:update]
   end
-  
+
 
 
 

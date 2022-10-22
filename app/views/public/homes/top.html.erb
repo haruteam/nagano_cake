@@ -1,28 +1,32 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-2 ml-auto">
-      <p class="mt-5">ジャンル検索</p>
-
-        <%=link_to "ケーキ",class: "text-dark" %><br>
-        <%=link_to "焼き菓子", class: "text-dark" %><br>
-        <%=link_to "プリン", class: "text-dark" %><br>
-        <%=link_to "キャンディ", class: "text-dark" %><br>
-
+    <div class="col-2">
+      <table class="table table-borderless border border-dark">
+        <thead>
+          <tr>
+            <th class="border border-dark">ジャンル検索</th>
+          </tr>
+        </thead>
+        <% @genre.each do |g| %>
+          <tbody>
+            <tr>
+              <td><%= link_to g.name, "", class: "text-dark" %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
     </div>
-    <div class="col-8">
-      <div class="card mt-5 w-100">
+    <div class="col-10">
+      <div class="card">
         <%= image_tag 'main_02.jpg' %>
         <div class="card-img-overlay">
           <p class="text-dark main-text">ようこそ、ながのCAKEへ！<br>このサイトは、ケーキ販売のECサイトになります。<br>
-          　会員でない方も商品の閲覧はできますが、<br>購入には会員登録が必要になります
+          会員でない方も商品の閲覧はできますが、<br>購入には会員登録が必要になります
           </p>
         </div>
       </div>
-    </div>
-    <div class="col-1 mr-auto"></div>
-  </div>
-  <h2 class="my-4 text-center"><strong>新着商品</strong></h2>
-  <div class="row">
+      <h2 class="my-4"><strong>新着商品</strong></h2>
+      <div class="row">
     <% @items.first(4).each do |item| %>
       <div class="col-3">
         <div class="card mx-aut" style="width: 15rem;">
@@ -39,4 +43,3 @@
     <%=link_to "全ての商品を見る >", items_path %>
   </div>
 </div>
-

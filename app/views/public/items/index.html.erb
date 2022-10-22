@@ -16,18 +16,26 @@
         <% end %>
       </table>
     </div>
-    <div><h2>商品一覧(全<%= @items_all.count %>件)</h2></div>
-    <% @items.each do |item| %>
-      <div class="col-2">
-        <div class="card mx-auto" style="width: 15rem;">
-          <%= link_to item_path(item.id), class: "card-body text-dark" do %>
-            <p><%= image_tag item.image, size: "200x150", class: "img-responsive center-block card-image-top" %></p>
-            <p><strong><%= item.name %></strong></p>
-            <p><strong>￥<%= item.price.to_s(:delimited) %></strong></p>
-          <% end %>
+    <div class="col-10">
+      <h2>商品一覧(全<%= @items_all.count %>件)</h2>
+      <div class="row">
+      <% @items.each do |item| %>
+        <div class="col-3">
+          <div class="card mx-auto" style="width: 15rem;">
+            <%= link_to item_path(item.id), class: "card-body text-dark" do %>
+              <p><%= image_tag item.image, size: "200x150",
+                  class: "img-responsive center-block card-image-top" %></p>
+              <p><strong><%= item.name %></strong></p>
+              <p><strong>￥<%= item.price.to_s(:delimited) %></strong></p>
+            <% end %>
+          </div>
         </div>
+      <% end %>
       </div>
-    <% end %>
+    </div>
+  </div>
+  <div class="row">
+    
   </div>
 </div>
 

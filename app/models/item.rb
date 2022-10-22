@@ -5,8 +5,9 @@ class Item < ApplicationRecord
   
   has_many :cart_items, foreign_key: "item_id"
   
-  def add_tax_price
-    (self.price * 1.10).round
+
+  def with_tax_price
+    (price * 1.10).floor
   end
 
 end
