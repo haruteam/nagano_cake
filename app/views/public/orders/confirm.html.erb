@@ -1,0 +1,76 @@
+<h4 class="mx-5">注文情報確認</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <% @orders.each do |f| %>
+          <tbody>
+            <tr>
+              <td>
+                <%= image_tag f.item.image, size: "80x50", class: "mr-4" %>
+                <strong><%= f.item.name %></strong>
+              </td>
+              <td>
+                <%= f.item.with_tax_price.to_s(:delimited) %>
+              </td>
+              <td><%= f.amount %></td>
+              <td><%= f.subtotal.to_s(:delimited) %></td>
+              <% @ci_all_price += f.subtotal %>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-4">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th>送料</th>
+              <td><%= @order.shipping_cost %></td>
+            </tr>
+            <tr>
+              <th>商品合計</th>
+              <td><%= @ci_all_price.to_s(:delimited) %></td>
+            </tr>
+            <tr>
+              <th>請求金額</th>
+              <td><%= (@order.shipping_cost + @ci_all_price).to_s(:delimited) %></td>
+            </tr>
+          </thead>
+        </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-9">
+      <strong class="h5 font-weight-bold mr-5">
+        支払方法
+      </strong>
+      <strong class="h5">
+        <%= @order.payment_method_i18n %>
+      </strong>
+      <strong class="h5 font-weight-bold mr-5">
+        お届け先
+      </strong>
+      <strong class="h5">
+        <%= @order.postal_code %>
+        <%= @order.address %>
+        <%= @order.customer.full_name %>
+      </strong>
+      
+      <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+        <%= f.hidden_field :payment_method %>
+        <%= f.hidden_field :postal_code %>
+        <%= f.hidden_field :address %>
+        <%= f.hidden_field :name %>
+      <% end %>
+    </div>
+  </div>
+</div>

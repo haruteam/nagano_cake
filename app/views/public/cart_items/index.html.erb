@@ -22,16 +22,25 @@
         <tbody>
           <%  @cart_item.each do |ci| %>
             <tr>
-              <td><%= image_tag ci.item.image, size: "80x50", class: "mr-4" %><strong></%><%= ci.item.name %></strong></td>
-              <td><%= ci.item.with_tax_price.to_s(:delimited) %></td>
+              <td>
+                <%= image_tag ci.item.image, size: "80x50", class: "mr-4" %>
+                <strong><%= ci.item.name %></strong>
+              </td>
+              <td>
+                <%= ci.item.with_tax_price.to_s(:delimited) %>
+              </td>
               <%= form_with model: @cart_item, url: customers_cart_item_path(ci.id), method: :patch do |f| %>
-                <td><%= f.hidden_field :item_id, :value => ci.item_id %>
-                    <%= f.hidden_field :customer_id, :value => ci.customer_id %>
-                    <%= f.select :amount, *[1..10], {selected: ci.amount} %><%= f.submit "変更", class: "ml-3 btn btn-success" %></td>
+                <td>
+                  <%= f.hidden_field :item_id, :value => ci.item_id %>
+                  <%= f.hidden_field :customer_id, :value => ci.customer_id %>
+                  <%= f.select :amount, *[1..10], {selected: ci.amount} %><%= f.submit "変更", class: "ml-3 btn btn-success" %>
+                </td>
               <% end %>
               <td><%= ci.subtotal.to_s(:delimited) %></td>
               <td><%= link_to "削除する", customers_cart_item_path(ci.id), method: :delete, class: "btn btn-danger px-3" %></td>
+              
               <% @ci_all_price += ci.subtotal %>
+              
             </tr>
           <% end %>
         </tbody>

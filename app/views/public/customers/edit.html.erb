@@ -4,7 +4,6 @@
       <h5>会員情報編集</h5>
       <%= form_with model: @customer, url: information_customers_path, method: :patch do |f| %>
         <table class="table table-borderless">
-          <thead></thead>
           <tbody>
             <tr>
               <th><%= f.label :full_name, "氏名" %></th>

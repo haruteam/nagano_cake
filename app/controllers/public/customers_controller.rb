@@ -5,7 +5,7 @@ class Public::CustomersController < ApplicationController
   end
   
   def edit
-    @customer=Customer.all
+    @customer=current_customer
   end
   
   def update

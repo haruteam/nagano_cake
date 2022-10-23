@@ -5,7 +5,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item=CartItem.find_by(item_id: params[:cart_item][:item_id], customer_id: current_customer.id)
+    @cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id], customer_id: current_customer.id)
     if @cart_item
       @cart_item.update(amount: params[:cart_item][:amount].to_i + @cart_item.amount.to_i)
       redirect_to customers_cart_items_path
@@ -21,7 +21,7 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_item=CartItem.all
-    @ci_all_price=0
+    @ci_all_price = 0
   end
 
   def update

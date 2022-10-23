@@ -17,10 +17,10 @@ Rails.application.routes.draw do
     patch 'information' => 'customer#update'
     get 'confirm'
     patch 'withdraw'=>'customers#withdrow'
-  
+
       delete 'cart_items/destroy_all'
       resources :cart_items, only: [:index, :create, :update, :destroy]
-      
+
     end
 
     resources :items, only: [:index, :show]
@@ -29,10 +29,10 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create, :show, :index]
     post 'orders/confirm'
     get 'orders/complete'
-  
+
     # deliveries
     resources :address, only: [:index, :edit, :create, :update, :destroy]
-    
+
   end
 
   # admin login~

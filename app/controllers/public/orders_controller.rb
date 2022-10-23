@@ -2,17 +2,17 @@ class Public::OrdersController < ApplicationController
   def new
     @order=Order.new
   end
-  
+
   def create
     @order=Order.new(order_params)
     if @order.save
       redirect_to items_path
     end
   end
-  
+
   def index
   end
-  
+
   def confirm
     @order=Order.new(order_params)
     @order.customer_id = current_customer.id
@@ -27,6 +27,11 @@ class Public::OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.last_name + @address.first_name
     end
+
+    @orders = current_customer.cart_items
+    @ci_all_price = 0
+    
+
   end
 
   def complete
@@ -34,12 +39,12 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:customer_id, :postal_code, :address,
                                   :name, :shipping_cost, :payment_method)
   end
-  
+
 end
