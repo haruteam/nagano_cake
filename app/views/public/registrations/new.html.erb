@@ -5,10 +5,6 @@
       <h2>Sign up</h2>
 
         <%= form_with model: @customer, url: customer_registration_path do |f| %>
-
-          
-
-          
           <div class="field">
             <%= f.label :last_name, "姓" %><br />
             <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
@@ -52,7 +48,6 @@
           <div class="field">
             <%= f.label :password, "パスワード(6文字以上)" %>
             <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br />
             <%= f.password_field :password, autocomplete: "new-password" %>
           </div>

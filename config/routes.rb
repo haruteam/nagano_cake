@@ -12,9 +12,11 @@ Rails.application.routes.draw do
 
   # customers ★
   scope module: :public do
-    resource :customers, only: [:show, :edit, :update] do
-    get 'customers/confirm'
-    put '/customers'=>'customers#withdrow'
+    resource :customers, only: [:show] do
+    get 'information/edit' => 'customers#edit'
+    patch 'information' => 'customer#update'
+    get 'confirm'
+    patch 'withdraw'=>'customers#withdrow'
   
       delete 'cart_items/destroy_all'
       resources :cart_items, only: [:index, :create, :update, :destroy]
@@ -24,12 +26,12 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
 
     # orders
-    resource :orders, only: [:new, :create, :show, :index]
+    resources :orders, only: [:new, :create, :show, :index]
     post 'orders/confirm'
     get 'orders/complete'
   
     # deliveries
-    resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
+    resources :address, only: [:index, :edit, :create, :update, :destroy]
     
   end
 

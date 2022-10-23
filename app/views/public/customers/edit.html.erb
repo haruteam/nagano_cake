@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <h5>会員情報編集</h5>
+      <%= form_with model: @customer, url: information_customers_path, method: :patch do |f| %>
+        <table class="table table-borderless">
+          <thead></thead>
+          <tbody>
+            <tr>
+              <th><%= f.label :full_name, "氏名" %></th>
+              <td>
+                <%= f.text_field :last_name, id: "customer_full_name" %>
+                <%= f.text_field :first_name, class: "ml-5" %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :full_name_kana, "フリガナ" %></th>
+              <td>
+                <%= f.text_field :last_name_kana, id: "customer_full_name_kana" %>
+                <%= f.text_field :first_name_kana, class: "ml-5" %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :postal_code, "郵便番号" %></th>
+              <td><%= f.text_field :postal_code %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :address, "住所" %></th>
+              <td><%= f.text_field :address, size: 80 %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :telephone_number, "電話番号" %></th>
+              <td><%= f.telephone_field :telephone_number %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :email, "メールアドレス" %></th>
+              <td><%= f.email_field :email %></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>
+                <%= f.submit "編集内容を保存", class: "btn btn-success px-5" %>
+                <%= link_to "退会する", confirm_customers_path, class: "btn btn-danger px-3 float-right" %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

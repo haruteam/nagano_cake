@@ -7,4 +7,8 @@ class Customer < ApplicationRecord
   has_many :cart_items
 
   has_many :orders
+  
+  def full_name
+    last_name + first_name
+  end
 end

@@ -24,7 +24,7 @@
       <p class="mt-4"><%= @item.introduction %></p>
       <p class="mt-5"><strong class="h4">￥ <%= @item.price.to_s(:delimited) %></strong>(税込)</p>
 
-      <%= form_with model: CartItem.new, url: cart_items_path, method: :post, class: "mt-4" do |f| %>
+      <%= form_with model: @cart_item, url: customers_cart_items_path, method: :post, class: "mt-4" do |f| %>
         <%= f.hidden_field :item_id, :value => @item.id %>
         <%= f.hidden_field :customer_id, :value => @customer.id %>
         <%= f.select :amount, *[1..10], { include_blank: '個数選択 '} %>
