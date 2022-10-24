@@ -26,9 +26,9 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
 
     # orders
-    resources :orders, only: [:new, :create, :show, :index]
     post 'orders/confirm'
     get 'orders/complete'
+    resources :orders, only: [:new, :create, :show, :index]
 
     # deliveries
     resources :address, only: [:index, :edit, :create, :update, :destroy]

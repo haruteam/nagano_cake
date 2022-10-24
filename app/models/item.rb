@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   
   has_many :cart_items, foreign_key: "item_id"
   
+  has_many :order_details 
 
   def with_tax_price
     (price * 1.10).floor
