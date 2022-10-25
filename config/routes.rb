@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create, :show, :index]
 
     # deliveries
-    resources :address, only: [:index, :edit, :create, :update, :destroy]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
   end
 

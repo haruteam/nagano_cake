@@ -33,14 +33,17 @@
                 <td>
                   <%= f.hidden_field :item_id, :value => ci.item_id %>
                   <%= f.hidden_field :customer_id, :value => ci.customer_id %>
-                  <%= f.select :amount, *[1..10], {selected: ci.amount} %><%= f.submit "変更", class: "ml-3 btn btn-success" %>
+                  <%= f.select :amount, *[1..10], {selected: ci.amount} %>
+                  <%= f.submit "変更", class: "ml-3 btn btn-success" %>
                 </td>
               <% end %>
-              <td><%= ci.subtotal.to_s(:delimited) %></td>
-              <td><%= link_to "削除する", customers_cart_item_path(ci.id), method: :delete, class: "btn btn-danger px-3" %></td>
-              
+              <td>
+                <%= ci.subtotal.to_s(:delimited) %>
+              </td>
+              <td>
+                <%= link_to "削除する", customers_cart_item_path(ci.id), method: :delete, class: "btn btn-danger px-3" %>
+              </td>
               <% @ci_all_price += ci.subtotal %>
-              
             </tr>
           <% end %>
         </tbody>

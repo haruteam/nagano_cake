@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+
   def new
     @order=Order.new
   end
@@ -22,6 +23,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @order = current_customer.orders
+    @orders = current_customer.orders.order_details.item_id
   end
 
   def confirm
