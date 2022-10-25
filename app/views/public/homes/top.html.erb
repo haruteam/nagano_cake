@@ -27,19 +27,25 @@
       </div>
       <h2 class="my-4"><strong>新着商品</strong></h2>
       <div class="row">
-    <% @items.first(4).each do |item| %>
-      <div class="col-3">
-        <div class="card mx-aut" style="width: 15rem;">
-          <%= link_to item_path(item.id), class: "card-body text-dark" do %>
-            <p><%= image_tag item.image, size: "200x150", class: "card-image-top" %></p>
-            <p><strong><%= item.name %></strong></p>
-            <p><strong>￥<%= item.price.to_s(:delimited)  %></strong></p>
-          <% end %>
-        </div>
+        <% @items.first(4).each do |item| %>
+          <div class="col-3">
+            <div class="card mx-aut" style="width: 15rem;">
+              <%= link_to item_path(item.id), class: "card-body text-dark" do %>
+                <p><%= image_tag item.image, size: "200x150", class: "card-image-top" %></p>
+                <p><strong><%= item.name %></strong></p>
+                <p><strong>￥<%= item.price.to_s(:delimited)  %></strong></p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
-  <div class="h5 float-right p-5 mb-5">
-    <%=link_to "全ての商品を見る >", items_path %>
+  <div class="row">
+    <div class="col-12">
+      <div class="h5 float-right p-5">
+        <%=link_to "全ての商品を見る >", items_path %>
+      </div>
+    </div>
   </div>
 </div>

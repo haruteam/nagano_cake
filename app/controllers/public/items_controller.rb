@@ -1,5 +1,5 @@
 class Public::ItemsController < ApplicationController
-  
+
   def create
     @ci=CartItem.new(ci_params)
     if @ci.save
@@ -8,8 +8,8 @@ class Public::ItemsController < ApplicationController
       render :show
     end
   end
-      
-  
+
+
   def index
     @genre=Genre.all
     @items=Item.page(params[:page]).per(8)
@@ -24,7 +24,7 @@ class Public::ItemsController < ApplicationController
   end
 
   private
-  
+
   def ci_params
     params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end

@@ -1,11 +1,11 @@
 class Public::OrdersController < ApplicationController
 
   def new
-    @order=Order.new
+    @order = Order.new
   end
 
   def create
-    @order=Order.new(order_params)
+    @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
 
@@ -24,11 +24,15 @@ class Public::OrdersController < ApplicationController
 
   def index
     @order = current_customer.orders
-    @orders = current_customer.orders.order_details.item_id
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @orders = OrderDetail.where(order_id: params[:id])
   end
 
   def confirm
-    @order=Order.new(order_params)
+    @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.shipping_cost = 800
     if params[:order][:select_address] == "0"
@@ -54,8 +58,6 @@ class Public::OrdersController < ApplicationController
   def complete
   end
 
-  def show
-  end
 
   private
 

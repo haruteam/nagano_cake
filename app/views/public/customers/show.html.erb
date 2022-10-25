@@ -4,9 +4,8 @@
     <div class="col-7">
       <strong class="font-weight-bold h5">登録情報</strong>
       <%= link_to "編集する", information_edit_customers_path, class: "btn btn-success px-3 ml-4" %>
-        <table class="table ">
-          <thead></thead>
-          <tbody>
+        <table class="table table-bordered">
+          <thead class="thead thead-light">
             <tr>
               <th>氏名</th>
               <td><%= @customer.last_name%><%= @customer.first_name %></td>
@@ -30,7 +29,7 @@
               <th>メールアドレス</th>
               <td><%= @customer.email %></td>
             </tr>
-          </tbody>
+          </thead>
         </table>
       <strong class="font-weight-bold h5">配送先</strong>
       <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary px-3 ml-5 mt-4" %>

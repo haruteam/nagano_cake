@@ -20,7 +20,11 @@ class Public::CartItemsController < ApplicationController
   end
 
   def index
-    @cart_item=CartItem.all
+    @cart_item=current_customer.cart_items
+    
+    
+
+    
     @ci_all_price = 0
   end
 

@@ -5,11 +5,11 @@
       <h4>
         <%= link_to "＋", new_admin_item_path, class: "text-secondary" %>
       </h4>
-    </button>    
+    </button>
   </div>
   <div class="row mt-4">
-      <table class="col-12">
-        <thead>
+      <table class="table table-borderless col-12">
+        <thead class="thead-light">
           <tr>
             <th class="mx-auto">商品ID</th>
             <th class="mx-auto">商品名</th>
@@ -36,5 +36,7 @@
           <% end %>
         </tbody>
       </table>
+
+      <div class="text-center"><%= paginate @items %></div>
   </div>
 </div>

@@ -25,7 +25,9 @@
                 <%= f.name %><br>
               </td>
               <td>
-                <%= @order_item %>
+                <% f.order_details.each do |order_detail| %>
+                  <%= order_detail.item.name %><br>
+                <% end %>
               </td>
               <td><%= (f.total_payment - 800).to_s(:delimited) %></td>
               <td><%= f.status_i18n %></td>

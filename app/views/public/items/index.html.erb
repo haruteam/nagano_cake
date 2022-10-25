@@ -20,24 +20,23 @@
       <h2>商品一覧(全<%= @items_all.count %>件)</h2>
       <div class="row">
       <% @items.each do |item| %>
-        <div class="col-3">
-          <div class="card mx-auto" style="width: 15rem;">
-            <%= link_to item_path(item.id), class: "card-body text-dark" do %>
-              <p><%= image_tag item.image, size: "200x150",
-                  class: "img-responsive center-block card-image-top" %></p>
-              <p><strong><%= item.name %></strong></p>
-              <p><strong>￥<%= item.price.to_s(:delimited) %></strong></p>
-            <% end %>
+          <div class="col-3">
+            <div class="card mx-auto" style="width: 15rem;">
+              <%= link_to item_path(item.id), class: "card-body text-dark" do %>
+                <p><%= image_tag item.image, size: "200x150",
+                   class: "img-responsive center-block card-image-top" %></p>
+                <p><strong><%= item.name %></strong></p>
+                <p><strong>￥<%= item.price.to_s(:delimited) %></strong></p>
+              <% end %>
+            </div>
           </div>
-        </div>
       <% end %>
       </div>
     </div>
   </div>
-  <div class="row">
-    
-  </div>
+  <span class="text-center">
+    <%= paginate @items %>
+  </span>
 </div>
 
 
-<div class="text-center"><%= paginate @items %></div>
