@@ -9,14 +9,20 @@ class Public::CustomersController < ApplicationController
   end
   
   def update
+    @customer=current_customer
+    @customer.update(customer_params)
+    redirect_to customers_path
   end
   
   def confirm
   end
   
   def withdraw
-    
-    
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理をいたしました"
+    redirect_to "/"
   end
   
   private

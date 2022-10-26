@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   scope module: :public do
     resource :customers, only: [:show] do
     get 'information/edit' => 'customers#edit'
-    patch 'information' => 'customer#update'
+    patch 'information' => 'customers#update'
     get 'confirm'
-    patch 'withdraw'=>'customers#withdrow'
+    patch 'withdraw'=>'customers#withdraw'
 
       delete 'cart_items/destroy_all'
       resources :cart_items, only: [:index, :create, :update, :destroy]

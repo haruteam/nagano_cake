@@ -4,6 +4,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
-    @orser=Order.find(params[:id])
+    @order=Order.find(params[:id])
+    @order_detail=OrderDetail.where(order_id: params[:id])
   end
 end

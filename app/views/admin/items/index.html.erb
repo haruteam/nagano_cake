@@ -22,7 +22,7 @@
           <% @items.each do |item| %>
             <tr>
               <td><%= item.id %></td>
-              <td><%=link_to admin_item_path(item.id) do %><%= item.name %><% end %></td>
+              <td><u><%=link_to item.name, admin_item_path(item.id), class: "text-dark" %></u></td>
               <td><%= item.price.to_s(:delimited) %></td>
               <td><%= item.genre.name %></td>
               <% if item.is_active %>
@@ -32,11 +32,12 @@
               <% end %>
             </tr>
             <!--delete-->
-            <tr><th><%= link_to "delete", admin_item_path(item.id), method: :delete %></th></tr>
+           
           <% end %>
         </tbody>
       </table>
-
-      <div class="text-center"><%= paginate @items %></div>
+      <div class="d-flex justify-content-center">
+        <%= paginate @items %>
+      </div>
   </div>
 </div>
